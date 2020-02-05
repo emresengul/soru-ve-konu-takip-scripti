@@ -93,6 +93,7 @@ exports.sinavDuzenleGoruntuleDers = (req, res, next) => {
         .then(bilgi => {
 
             let valuem = eval(`bilgi.konular[0].ders["${ders}"]`);
+            console.log(valuem)
             res.render("admin/duzenle-ders", {
                 ders: valuem[0],
                 ad: ders,
@@ -148,7 +149,7 @@ exports.sinavDuzenleKaydet = (req, res, next) => {
 
     Sinav.findOne({ sinav: gelenSinav, })
         .then(sinav => {
-            var val = eval(`sinav.konular[0].ders.${gelenDers}`)
+            var val = eval(`sinav.konular[0].ders["${gelenDers}"]`)
 
             val[0] = deger;
             sinav.markModified("konular")
