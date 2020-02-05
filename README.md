@@ -1,4 +1,6 @@
+
 # Soru ve Konu Takip Uygulaması
+## Demo [sorukonu.emresengul.com](sorukonu.emresengul.com)
 
 Soru ve Konu Takip Uygulaması sayesinde hazırlandığınız sınavın konularını ve her konu için çözdüğünüz soruları istatiksel bir şekilde takip edebilirsiniz. Tüm veriler görselleştirilmiş şekilde karşınıza çıkar. Geliştirme aşaması devam etmekte olup şu an sorunsuz şekilde çalışmaktadır.
 
