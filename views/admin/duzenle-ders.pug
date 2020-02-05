@@ -24,7 +24,7 @@ block content
 
 
                         each dd in ders
-                            input.konu(type="text"  value=`${dd[0]}` name=`${ad}-${n++}` onblur="kaydet(this,this.value)")
+                            input(type="text"  value=`${dd[0]}` name=`${ad}-${n++}` onblur="kaydet(this,this.value)")
                             a(class="btn btn-danger" style="border-radius: 50%; margin-left:-1.2rem;" id=`${ad}-${n-1}` onclick="sil(this)") -
                 .butonlar.mt-3
                     a(class="btn btn-primary" style="border-radius: 50%").mr-2.ml-2.ekle +
