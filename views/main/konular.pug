@@ -1,0 +1,38 @@
+include ../layouts/main-layout.pug
+
+
+block content
+.container
+    .row
+        .col-md-12
+            -var x = 0
+            each bb in dersler
+                table.table.table-striped.table-responsive-sm.mt-5
+                    thead
+                        tr
+                            th(colspan="5") 
+                                h4.text-center #{bb} #{deger[x][0].length} konu içeriyor
+                        tr
+                            th # (#{x++})
+                            th Konu
+                            th Bitirme Durumu
+                            th Güncelle
+                    tbody
+                        - var n = 1;
+                        each val in deger[x-1][0]
+                            tr
+                                td #{n++}
+                                td #{val[0]}
+                                td #{val[2]}
+                                td
+                                    form(action="/konu-guncelle", method="post")
+                                        input(type="hidden" value=`${bb}:${n-2}` name="update")
+                                        input(type="hidden" name="_csrf" value=`${csrfToken}`)
+                                        select.sinav.form-control.col-md-6(name='sinav' onchange="this.form.submit()")
+                                            option(value='bitti' selected= val[2]=="Bitti" ) Bitti
+                                            option(value='bitmedi' selected= val[2]=="Bitmedi" ) Bitmedi
+                                        p.ml-2 #{val[2]}
+     
+
+
+

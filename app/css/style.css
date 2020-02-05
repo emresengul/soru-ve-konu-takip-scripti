@@ -1,0 +1,31 @@
+body{
+    background-color: #40e0d0;
+}
+.navbar{
+    background-color: #633a82 !important;
+}
+.navbar-brand{
+    color: #d9d9d9 !important;
+    font-size: 2rem;
+}
+.navbar-brand:hover{
+    color: orange !important;
+}
+nav .ml-auto{
+    margin-right: 15rem;
+    font-size: 1.4rem;
+}
+.nav-link{
+    color: #d9d9d9 !important;
+}
+.nav-link:hover  {
+    color: #f1fcfc !important;
+}
+#login{ 
+    /* background-color: orange !important; */
+    margin: 0 auto;
+}
+.form-group label{
+    color: black !important;
+    font-weight: bold;
+}

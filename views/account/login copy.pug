@@ -1,0 +1,47 @@
+doctype html
+head
+  // Meta Tagları
+  meta(charset='utf-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no')
+  // Bootstrap CSS
+  link(rel='stylesheet' href='./css/bootstrap.min.css')
+  link(rel='stylesheet' href='./css/style.css')
+  title Soru ve Konu Takip Uygulamas&imath;
+nav.navbar.navbar-expand-lg.navbar-light.bg-light
+  a.navbar-brand.ml-5(href='/') SoruKonu
+  button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarNav' aria-controls='navbarNav' aria-expanded='false' aria-label='Toggle navigation')
+    span.navbar-toggler-icon
+  #navbarNav.collapse.navbar-collapse
+    ul.navbar-nav.ml-auto
+      li.nav-item.active
+        a.nav-link(href='#') Anasayfa
+      li.nav-item
+        a.nav-link(href='#') Konular&imath;m
+      li.nav-item
+        a.nav-link(href='#') Sorular&imath;m
+      li.nav-item
+        a.nav-link(href='#') &Idot;statistiklerim
+      li.nav-item
+        a.nav-link(href='/login')
+          i.fas.fa-sign-in-alt
+section#login-section
+  .container
+    .row
+      .col-md-9
+        h1.mt-2 Giri&scedil; Yap
+        hr
+        if errorMessage
+          div.alert.alert-danger.col-sm-7 !{errorMessage}
+        form( method="POST" action="login" )#login
+          input(type="hidden" name="_csrf" value=`${csrfToken}`)
+          .form-group.mt-5
+            label(for='email') Kullan&imath;c&imath; ad&imath; veya Mail
+            input#email.form-control.col-md-6(type='email' aria-describedby='emailHelp' placeholder='Email..' name='email')
+          .form-group
+            label(for='password') &Scedil;ifre
+            input#password.form-control.col-md-6(type='password' placeholder='Şifreniz..' name='password')
+          button.btn.btn-primary(type='submit') Giri&scedil; Yap
+script(src='https://code.jquery.com/jquery-3.4.1.slim.min.js' integrity='sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n' crossorigin='anonymous')
+script(src='https://kit.fontawesome.com/a87f16e663.js' crossorigin='anonymous')
+script(src='./js/popper.min.js')
+script(src='./js/bootstrap.min.js')

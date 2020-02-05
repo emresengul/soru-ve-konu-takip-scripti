@@ -1,0 +1,31 @@
+nav.navbar.navbar-expand-lg.navbar-light.bg-light
+  a.navbar-brand.ml-5(href='/') SoruKonu
+  button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarNav' aria-controls='navbarNav' aria-expanded='false' aria-label='Toggle navigation')
+    span.navbar-toggler-icon
+  #navbarNav.collapse.navbar-collapse
+    ul.navbar-nav.ml-auto
+      li.nav-item
+        a(href='/'  class=(path === "/"?"nav-link aktif":"nav-link")  ) Anasayfa
+      li.nav-item
+        a(href='/konular' class=(path === "/konular"?"nav-link aktif":"nav-link")) Konular&imath;m
+      li.nav-item
+        a(href='/sorular' class=(path === "/sorular"?"nav-link aktif":"nav-link")) Sorular&imath;m
+      li.nav-item
+        a(href='/istatistikler' class=(path === "/istatistikler"?"nav-link aktif":"nav-link")) &Idot;statistiklerim
+      if isAdmin
+        li.nav-item
+          a(href='/admin' class=(path === "/admin"?"nav-link aktif":"nav-link")) Admin
+      if isAuthenticated   
+        li.nav-item
+          a(href='/logout' class=(path === "/logout"?"nav-link aktif ayar":"nav-link ayar"))
+            i.fas.fa-chevron-left  Çıkış
+      if !isAuthenticated
+        li.nav-item
+          a(href='/login' class=(path === "/login"?"nav-link aktif ayar":"nav-link ayar"))
+            i.fas.fa-sign-in-alt  Giriş
+        
+
+
+
+
+        

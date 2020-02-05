@@ -1,0 +1,52 @@
+
+include ../layouts/main-layout.pug
+
+block content
+
+
+.container
+    .row
+        .col-md-12
+            if (aktif == false)
+                h1.text-info Bu sınav 
+                    span.text-danger pasif 
+                    span durumda
+                form(action=`/admin/aktif/${sinav}`, method="post")
+                    input(type="hidden" name="_csrf" value=`${csrfToken}`)
+                    button(type="submit" class="btn btn-success") AKTİFLEŞTİR
+            if (aktif == true)
+                h1.text-info Bu sınav 
+                    span.text-success aktif 
+                    span durumda
+                form(action=`/admin/pasif/${sinav}`, method="post")
+                    input(type="hidden" name="_csrf" value=`${csrfToken}`)
+                    button(type="submit" class="btn btn-danger") PASİF YAP
+        .col-md-12
+            h1 Düzenlemek istediğiniz derse tıklayın
+        .col-md-12
+            each dd in ders
+                a(href=`${url}${sinav},${dd}`) #{dd}
+                    br
+        .col-md-12
+            h4 veya yeni ders ekleyin
+        .col-md-12
+            form(action="/admin/ders-ekle", method="post")
+                .konular
+                    input(type="hidden" name="_csrf" value=`${csrfToken}`)
+                    input(type="hidden" name="sinav" value=`${sinav}`)
+
+                    -var n = 0;
+                    each dd in ders
+                        input(type="text" value=`${dd}` name=`${sinav}-${n++}`)
+                        a(class="btn btn-danger" style="border-radius: 50%; margin-left:-1.2rem;" id=`${sinav}-${n-1}` onclick="sil(this)") -
+
+                    //- input(type="text" name="ders")
+                .butonlar
+                    a(class="btn btn-primary" style="border-radius: 50%").mr-2.ml-2.ekle +
+
+                    button(type="submit" class="btn btn-warning").mr-1.ml-1 Kaydet
+
+
+
+block script
+script(src="/js/newline.js")

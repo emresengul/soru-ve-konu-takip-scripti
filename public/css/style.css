@@ -1,0 +1,68 @@
+body{
+    background-color: #40e0d0;
+}
+.navbar{
+    background-color: #633a82 !important;
+}
+.navbar-brand{
+    color: #d9d9d9 !important;
+    font-size: 2rem;
+}
+.navbar-brand:hover{
+    color: orange !important;
+}
+nav .ml-auto{
+    margin-right: 15rem;
+    font-size: 1.4rem;
+}
+.nav-link{
+    color: #d9d9d9 !important;
+}
+.nav-link:hover  {
+    color: #f1fcfc !important;
+}
+#login{ 
+    /* background-color: orange !important; */
+    margin: 0 auto;
+}
+.form-group label{
+    color: black !important;
+    font-weight: bold;
+}
+.stats{
+    margin-left: 0.3rem;
+    display: block;
+    background-color: red;
+    height: 6rem;
+}
+.stats h1{
+    margin:0;
+    padding:0;
+    color: white;
+}
+
+.aktif{
+    color: white !important;
+}
+.ayar{
+    margin-top: .4rem;
+}
+#dashboard .col-md-3{
+    margin: 0 auto;
+}
+.sorular{
+    background-color: #40E0D0;
+    border: 1px solid gray;
+}
+.sorular:focus{
+    background-color: honeydew;
+    border: 1px solid gray;
+}
+.ilkdeger{
+    border: none;
+    background-color: #40E0D0;
+}
+.konu{
+    position: relative;
+    z-index: -1;
+}

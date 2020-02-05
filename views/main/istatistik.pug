@@ -1,0 +1,50 @@
+include ../layouts/main-layout.pug
+
+block content
+  //- input(value=`${veri}` id="veriler" type="hidden")
+  //- input(value=`${ders}` id="dersler" type="hidden")
+  input(value=`${dersad}` id="dersadi" type="hidden")
+  input(value=`${konu}` id="konular" type="hidden")
+  input(value=`${basliklar}` id="basliklar" type="hidden")
+  input(value=`${sorular}` id="sorular" type="hidden")
+
+  .container
+    .row
+      .col-md-12
+        h6.text-center Soru eklemek için | 
+          a(href="/sorular") Sorular
+        h6.text-center Konuları görmek için | 
+          a(href="/konular") Konular
+        h6.text-center Genel İstatistiklerim | 
+          a(href="/istatistikler") İstatistiklerim
+        hr
+      .col-md-12
+        table.table.table-dark
+          thead
+            tr
+              th.text-center(colspan="4") #{dersad} 
+                span.text-danger (Toplam Çözülen Soru: #{toplam})
+            tr
+              th(scope='col') #
+              th(scope='col') Konu
+              th(scope='col') Çözülen Soru
+              th(scope='col') Bitirme Durumu
+          tbody
+            -var n = 0;
+            each dd in konular
+              tr
+                th(scope='row') #{n=n+1}
+                td #{dd[0]}
+                td #{dd[1]}
+                td #{dd[2]}
+
+
+
+
+
+block script
+
+  script(src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js")
+  script(src="../js/ozelstat.js")
+  script.
+    veriDuzenle()

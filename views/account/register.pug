@@ -1,0 +1,33 @@
+include ../layouts/main-layout.pug
+
+block content
+section#register-section
+  .container
+    .row
+      .col-md-9
+
+        h1.mt-2 Kay&imath;t Ol
+        hr
+
+        if errorMessage
+          div.alert.alert-danger.col-sm-7 !{errorMessage}
+        form( method="POST" action="register" )#register
+          input(type="hidden" name="_csrf" value=`${csrfToken}`)
+          .form-group.mt-5
+            label(for='name') İsim
+            input#isim.form-control.col-md-6(type='text' aria-describedby='emailHelp' placeholder='İsim..' name='name' required)
+          .form-group
+            label(for='email') Email
+            input#email.form-control.col-md-6(type='email' aria-describedby='emailHelp' placeholder='Email..' name='email'  required)
+          .form-group
+            label(for='password') Şifre
+            input#password.form-control.col-md-6(type='password' placeholder='Şifreniz..' name='password' minlength="8" required)
+          .form-group
+            label(for='sinav') Hangi s&imath;nava haz&imath;rlan&imath;yorsunuz?
+            select#sinav.form-control.col-md-6(name='sinav' required)
+              option(selected='' disabled='' hidden='' value="") S&imath;nav T&uuml;r&uuml;n&uuml; Se&ccedil;in
+              each dd in sinavlar
+                option(value=`${dd.sinav}` disabled= !dd.isActive) #{dd.sinav.toUpperCase()}
+                  small= !dd.isActive?" (PASİF)":""
+          button.btn.btn-primary(type='submit') Kayıt Ol
+

@@ -1,0 +1,35 @@
+include ../layouts/main-layout.pug
+
+
+block content
+section#dashboard.mt-5
+  if isAuthenticated
+    .container
+      .row
+        .col-md-12
+          h4 Merhaba, #{user.name} | 
+            span.text-dark Admin
+          hr
+        .col-md-3.stats.mt-2
+            a(href=`/admin/dgs`)
+                h1.text-center.mt-3 DGS
+        .col-md-3.stats.mt-2
+            a(href=`/admin/kpss`)
+                h1.text-center.mt-3 KPSS
+        .col-md-3.stats.mt-2
+            a(href=`test`)
+                h1.text-center.mt-3 ALES
+
+
+              
+
+
+  else
+    .container
+      h1
+        a(href="/login") Giriş Yap
+          span veya
+        h1
+          a(href="/register") Kayıt Ol
+block script
+

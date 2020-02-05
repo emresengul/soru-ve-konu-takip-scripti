@@ -1,0 +1,26 @@
+include ../layouts/main-layout.pug
+
+
+block content
+section#login-section
+  .container
+    .row
+      .col-md-9
+        h1.mt-2 Giriş Yap
+        hr
+        if errorMessage
+          div.alert.alert-danger.col-sm-7 !{errorMessage}
+        form( method="POST" action="login" )#login
+          input(type="hidden" name="_csrf" value=`${csrfToken}`)
+          .form-group.mt-5
+            label(for='email') Email
+            input#email.form-control.col-md-6(type='email' aria-describedby='emailHelp' placeholder='Email..' name='email')
+          .form-group
+            label(for='password') Şire
+            input#password.form-control.col-md-6(type='password' placeholder='Şifreniz..' name='password')
+          .form-group
+            a(href="/reset-password/").text-dark Şifremi Unuttum
+          button.btn.btn-primary(type='submit') Giriş Yap
+      .col-md-3
+        h1 Veya 
+          a(href="/register") Kayıt Ol

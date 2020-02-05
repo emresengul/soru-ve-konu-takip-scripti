@@ -1,0 +1,120 @@
+include ../layouts/main-layout.pug
+
+
+block content
+.container
+    .row
+        .col-md-12
+        -var x = 0
+        each bb in dersler
+            table.table.table-striped.table-responsive-sm.mt-5
+                thead
+                    tr
+                        th(colspan="5") 
+                            h4.text-center #{bb} #{deger[x][0].length} konu içeriyor
+                    tr
+                        th # (#{x++})
+                        th Konu
+                        th Bitirme Durumu
+                        th Güncelle
+                tbody
+                    - var n = 1;
+                    each val in deger[x-1][0]
+                        tr
+                            td #{n++}
+                            td #{val[0]}
+                            td #{val[2]}
+                            td
+                                form(action="/soru-guncelle", method="post")
+                                    input.ilkdeger(type="text" disabled value=`${val[1]} soru çözdün`)
+                                    input(type="hidden" value=`${bb}:${n-2}` name="update")
+                                    input(type="hidden" name="_csrf" value=`${csrfToken}` class=`${bb}${n}`)
+                                    .radio
+                                        input(type='radio' name='durum' value='ekle' required class=`${bb}${n}` onchange=`kontrolEt(this,${val[1]})`)
+                                        |  Üstüne Ekle 
+                                        input(type='radio' name='durum' value='esitle' class=`${bb}${n}` onchange=`kontrolEt(this,${val[1]})`)
+                                        |  Eşitle
+                                        div(class=`${bb}${n}`)
+
+
+
+
+
+
+
+
+
+        //- if dersler.includes("Matematik")
+        //-     .col-md-12.mt-5
+        //-         table.table.table-striped.table-responsive-sm
+        //-             thead
+        //-                 tr
+        //-                     th(colspan="5") 
+        //-                         h4.text-center Matematik #{deger[0].length} konu içeriyor
+
+        //-                 tr
+        //-                     th #
+        //-                     th Konu
+        //-                     th Bitirme Durumu
+        //-                     th Güncelle
+        //-             tbody
+        //-                 - var n = 1;
+        //-                 each val in deger[0]
+        //-                     tr
+        //-                         td #{n++}
+        //-                         td #{val[0]}
+        //-                         td #{val[2]}
+        //-                         td
+        //-                             form(action="/soru-guncelle", method="post")
+        //-                                 input#ilkdeger(type="text" disabled value=`${val[1]} soru çözdün`)
+        //-                                 input(type="hidden" value=`matematik:${n-2}` name="update")
+        //-                                 input(type="hidden" name="_csrf" value=`${csrfToken}` class=`matematik${n}`)
+        //-                                 .radio
+        //-                                     input(type='radio' name='durum' value='ekle' required class=`matematik${n}` onchange=`kontrolEt(this,${val[1]})`)
+        //-                                     |  Üstüne Ekle 
+        //-                                     input(type='radio' name='durum' value='esitle' class=`matematik${n}` onchange=`kontrolEt(this,${val[1]})`)
+        //-                                     |  Eşitle
+        //-                                     div(class=`matematik${n}`)
+
+        //- if dersler.includes("Türkçe")
+        //-     .col-md-12.mt-5
+        //-         table.table.table-striped.table-responsive-sm
+        //-             thead
+        //-                 tr
+        //-                     th(colspan="5") 
+        //-                         h4.text-center Türkçe #{deger[1].length} konu içeriyor
+
+        //-                 tr
+        //-                     th #
+        //-                     th Konu
+        //-                     th Bitirme Durumu
+        //-                     th Güncelle
+        //-             tbody
+        //-                 - var n = 1;
+        //-                 each val in deger[1]
+        //-                     tr
+        //-                         td #{n++}
+        //-                         td #{val[0]}
+        //-                         td #{val[2]}
+        //-                         td
+        //-                             form(action="/soru-guncelle", method="post")
+        //-                                 input#ilkdeger(type="text" disabled value=`${val[1]} soru çözdün`)
+        //-                                 input(type="hidden" value=`turkce:${n-2}` name="update")
+        //-                                 input(type="hidden" name="_csrf" value=`${csrfToken}` class=`turkce${n}`)
+        //-                                 .radio
+        //-                                     input(type='radio' name='durum' value='ekle' required class=`turkce${n}` onchange=`kontrolEt(this,${val[1]})`)
+        //-                                     |  Üstüne Ekle 
+        //-                                     input(type='radio' name='durum' value='esitle' class=`turkce${n}` onchange=`kontrolEt(this,${val[1]})`)
+        //-                                     |  Eşitle
+        //-                                     div(class=`turkce${n}`)
+
+
+block script
+    script(src="../js/kontrol.js")
+
+
+                                        
+
+
+
+

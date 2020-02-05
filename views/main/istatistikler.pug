@@ -1,0 +1,24 @@
+include ../layouts/main-layout.pug
+
+block content
+  //- input(value=`${veri}` id="veriler" type="hidden")
+  //- input(value=`${ders}` id="dersler" type="hidden")
+  input(value=`${butun}` id="butun" type="hidden")
+  input(value=`${oranlar}` id="konular" type="hidden")
+  .container
+    .row
+      .col-md-12
+        h1.text-center.text-dark TOPLAM ÇÖZÜLEN SORU 
+          span.text-danger (#{toplamsoru})
+      .col-md-12.cards
+        canvas#myChart
+
+
+
+
+block script
+
+  script(src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js")
+  script(src="../js/stat.js")
+  script.
+    veriDuzenle()

@@ -1,0 +1,39 @@
+
+include ../layouts/main-layout.pug
+
+
+
+block content
+
+
+.container
+    .row
+        .col-md-12
+            h1 Düzenlemek istediğiniz konuyu seçin
+            h4.mb-2.text-info Dikkat:
+                span Yeni ders eklemeden önce kaydedin yoksa sıfırlanır.
+            h6.mb-2.text-dark Şuan Düzenlenen Ders: #{ad} - 
+                a(href=`/admin/duzenle/${sinav}`) #{sinav.toUpperCase()}
+
+        .col-md-12
+            form(action="/admin/duzenle", method="post")
+                .konular
+                    -var n = 0;
+                        input(type="hidden" value=`${sinav}:${ad}` id="degerler" name="deger")
+                        input(type="hidden" name="_csrf" value=`${csrfToken}`)
+
+
+                        each dd in ders
+                            input.konu(type="text"  value=`${dd[0]}` name=`${ad}-${n++}` onblur="kaydet(this,this.value)")
+                            a(class="btn btn-danger" style="border-radius: 50%; margin-left:-1.2rem;" id=`${ad}-${n-1}` onclick="sil(this)") -
+                .butonlar.mt-3
+                    a(class="btn btn-primary" style="border-radius: 50%").mr-2.ml-2.ekle +
+                    
+                    button(type="submit" class="btn btn-success").mr-1.ml-1 KAYDET
+            //- textarea(name="duzen", cols="30", rows="10")
+
+
+
+
+block script
+script(src="/js/newline.js")

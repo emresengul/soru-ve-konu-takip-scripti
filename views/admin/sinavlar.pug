@@ -1,0 +1,60 @@
+include ../layouts/main-layout.pug
+
+
+block content
+section.mt-5
+  if isAuthenticated
+    .container
+      .row
+        .col-md-12
+          h4  #{sinav.toUpperCase()} | Düzenlemek istediğiniz yılı seçin
+          hr
+        //- -var n = 0
+        //- while n < 10
+        //-   .col-md-3.stats.mt-2.mr-2
+        //-     a(href=`/admin/kontrol/dgs:2021`)
+        //-         h1.text-center.mt-3 DGS-2021
+        .col-md-12.stats.mt-2.mr-2
+          a(href=`/admin/kontrol/${sinav}:${yil}`)
+              h1.text-center.mt-3 #{sinav.toUpperCase()}-#{yil}
+        - var n = 0;
+        while n < 10
+          .col-md-3.stats.mt-2.mr-2
+            a(href=`/admin/kontrol/dgs:2021`)
+                h1.text-center.mt-3 #{sinav.toUpperCase()}-#{yil = yil + 1}
+                h6= n++
+          
+        
+
+        //- .col-md-3.stats.mt-2.mr-2
+        //-     a(href=`/admin/kontrol/dgs:2020`)
+        //- .col-md-3.stats.mt-2.mr-2
+        //-     a(href=`/admin/kontrol/dgs:2021`)
+        //-         h1.text-center.mt-3 DGS-2021
+        //- .col-md-3.stats.mt-2.mr-2
+        //-     a(href=`/admin/kontrol/dgs:2022`)
+        //-         h1.text-center.mt-3 DGS-2022
+        //- .col-md-3.stats.mt-2.mr-2
+        //-     a(href=`/admin/kontrol/dgs:2023`)
+        //-         h1.text-center.mt-3 DGS-2023                
+        //- .col-md-3.stats.mt-2.mr-2
+        //-     a(href=`/admin/kontrol/dgs:2024`)
+        //-         h1.text-center.mt-3 DGS-2024
+        //- .col-md-3.stats.mt-2.mr-2
+        //-     a(href=`/admin/kontrol/dgs:2025`)
+        //-         h1.text-center.mt-3 DGS-2025
+        //- .col-md-3.stats.mt-2.mr-2
+        //-     a(href=`/admin/kontrol/dgs:2026`)
+        //-         h1.text-center.mt-3 DGS-2026
+              
+
+
+  else
+    .container
+      h1
+        a(href="/login") Giriş Yap
+          span veya
+        h1
+          a(href="/register") Kayıt Ol
+block script
+

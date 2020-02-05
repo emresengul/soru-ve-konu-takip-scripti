@@ -1,0 +1,36 @@
+include ../layouts/main-layout.pug
+
+
+block content
+section#dashboard.mt-5
+  if isAuthenticated
+    .container
+      .row
+        .col-md-12
+          h4 Merhaba, #{user.name}
+          hr
+        .col-md-12
+          h6.text-center Soru eklemek için | 
+            a(href="/sorular") Ekle
+          h6.text-center Konuları görmek için | 
+            a(href="/konular") Konular
+          hr
+
+        each bilgi in user.dersler
+          .col-md-3.stats.mt-2
+          
+            a(href=`${url}${bilgi} `)
+              h1.text-center.mt-3 #{bilgi}
+
+              
+
+
+  else
+    .container
+      h1
+        a(href="/login") Giriş Yap
+      h4 veya
+        h1
+          a(href="/register") Kayıt Ol
+block script
+
