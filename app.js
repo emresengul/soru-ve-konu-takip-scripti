@@ -6,6 +6,7 @@ const userRoutes = require("./routes/user");
 const adminRoutes = require("./routes/admin")
 const accountRoutes = require("./routes/account");
 const mongoose = require("mongoose")
+const locals = require("./middleware/locals");
 
 const User = require("./models/user");
 
@@ -64,8 +65,8 @@ app.use(adminRoutes);
 app.use(accountRoutes);
 
 
-app.use("/500",errorController.get500Page)
-app.use(errorController.get404Page);
+app.use("/500",locals,errorController.get500Page)
+app.use(locals,errorController.get404Page);
 app.use((error,req,res,next)=>{
     console.log(error)
     res.status(500).render("error/500",{title:"Server Error",error:error})
