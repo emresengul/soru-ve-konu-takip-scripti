@@ -4,33 +4,87 @@ include ../layouts/main-layout.pug
 block content
 section#dashboard.mt-5
   if isAuthenticated
-    .container
-      .row
-        .col-md-12
-          h4 Merhaba, #{user.name}
-          hr
-        .col-md-12
-          h6.text-center Soru eklemek için | 
-            a(href="/sorular") Ekle
-          h6.text-center Konuları görmek için | 
-            a(href="/konular") Konular
-          hr
-
-        each bilgi in user.dersler
-          .col-md-3.stats.mt-2
-          
-            a(href=`${url}${bilgi} `)
-              h1.text-center.mt-3 #{bilgi}
-
-              
+    section#user_page
+      .container
+        .row
+          .col-md-12.title
+            h4 Merhaba #{user.name},
+            hr
+          .col-md-6
+            .giris
+              h5 Soru Eklemek İçin
+              a(href='/sorular') EKLE
+          .col-md-6
+            .giris
+              h5 Konuları Görüntülemek İçin
+              a(href='/konular') Konularım
+          .col-md-12.title
+            hr
+            h1 Derslerim
+            hr
+          .col-md-12
+            .istatistik_css_normal
+              ul
+                each bilgi in user.dersler
+                  li.col-md-3.istatistik_css
+                    h4 #{bilgi}
+                    a(href=`${url}${bilgi}`) İstatistikleri Görüntüle
 
 
   else
-    .container
-      h1
-        a(href="/login") Giriş Yap
-      h4 veya
-        h1
-          a(href="/register") Kayıt Ol
+    section#landing
+      .container
+        .row
+          .col-md-12
+            a.btn.btn-info.col-md-12(href='/register') KAYIT OL
+            a.btn.btn-success.col-md-12.mt-2.mb-2(href='/login') G&Idot;R&Idot;&Scedil; YAP
+
+          .col-md-12
+            #carouselExampleIndicators.carousel.slide(data-ride='carousel')
+              ol.carousel-indicators
+                li.active(data-target='#carouselExampleIndicators' data-slide-to='0')
+                li(data-target='#carouselExampleIndicators' data-slide-to='1')
+                li(data-target='#carouselExampleIndicators' data-slide-to='2')
+              .carousel-inner
+                .carousel-item.active
+                  img.d-block.w-100(src='https://www.solidbackgrounds.com/images/1280x720/1280x720-medium-sky-blue-solid-color-background.jpg' alt='First slide')
+                .carousel-item
+                  img.d-block.w-100(src='https://cdn.wallpapersafari.com/66/38/N5RLvu.jpg' alt='Second slide')
+                .carousel-item
+                  img.d-block.w-100(src='https://images.wallpaperscraft.com/image/neon_construction_glow_123932_1280x720.jpg' alt='Third slide')
+              a.carousel-control-prev(href='#carouselExampleIndicators' role='button' data-slide='prev')
+                span.carousel-control-prev-icon(aria-hidden='true')
+                span.sr-only &Ouml;nceki
+              a.carousel-control-next(href='#carouselExampleIndicators' role='button' data-slide='next')
+                span.carousel-control-next-icon(aria-hidden='true')
+                span.sr-only Sonraki
+
+          .col-md-12.bilgi
+            ul
+              li.col-md-3.bilgiler
+                .space
+                img(src='https://cdn.cimri.io/image/160x160/cadran-msc058-metal-ferforje-50x50-cm-duvar-saati_147019721.jpg' alt='')
+                h4 DGS
+                p
+                  | DGS s&imath;nav&imath;na &scedil;imdi haz&imath;rlan! DGS ile ilgili konular&imath; ve sorular&imath; takip et. Senin yerine biz hesaplayal&imath;m ve sana bildirelim.
+              li.col-md-3.bilgiler
+                .space
+                img(src='https://cdn.cimri.io/image/160x160/cadran-msc058-metal-ferforje-50x50-cm-duvar-saati_147019721.jpg' alt='')
+                h4 KPSS
+                p
+                  | KPSS s&imath;nav&imath;na &scedil;imdi haz&imath;rlan! KPSS ile ilgili konular&imath; ve sorular&imath; takip et. Senin yerine biz hesaplayal&imath;m ve sana bildirelim.
+              li.col-md-3.bilgiler
+                .space
+                img(src='https://cdn.cimri.io/image/160x160/cadran-msc058-metal-ferforje-50x50-cm-duvar-saati_147019721.jpg' alt='')
+                h4 TYT-AYT(YKS)
+                p
+                  | &Uuml;N&Idot;VERS&Idot;TE s&imath;nav&imath;na &scedil;imdi haz&imath;rlan! &Uuml;N&Idot;VERS&Idot;TE ile ilgili konular&imath; ve sorular&imath; takip et. Senin yerine biz hesaplayal&imath;m ve sana bildirelim.
+              li.col-md-3.bilgiler
+                .space
+                img(src='https://cdn.cimri.io/image/160x160/cadran-msc058-metal-ferforje-50x50-cm-duvar-saati_147019721.jpg' alt='')
+                h4 ALES
+                p
+                  | ALES s&imath;nav&imath;na &scedil;imdi haz&imath;rlan! ALES ile ilgili konular&imath; ve sorular&imath; takip et. Senin yerine biz hesaplayal&imath;m ve sana bildirelim.
+
 block script
 
